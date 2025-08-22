@@ -1,0 +1,32 @@
+﻿@model CustomerModel
+
+<h2 style="font-family:Arial; color:#333;">Send Email to @Model.CustomerName</h2>
+
+<form asp-action="SendEmail" method="post" enctype="multipart/form-data"
+      style="max-width:500px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:8px; background-color:#f9f9f9;">
+
+    <input type="hidden" name="id" value="@Model.CustomerId" />
+
+    <div style="margin-bottom:15px;">
+        <label for="subject" style="display:block; font-weight:bold;">Subject</label>
+        <input type="text" name="subject" id="subject" required
+               style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="body" style="display:block; font-weight:bold;">Body</label>
+        <textarea name="body" id="body" required
+                  style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; height:120px;"></textarea>
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="attachment" style="display:block; font-weight:bold;">Attachment</label>
+        <input type="file" name="attachment" id="attachment"
+               style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <button type="submit"
+            style="width:100%; padding:10px; background-color:#007bff; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Send
+    </button>
+</form>

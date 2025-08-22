@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CustomerModel>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+    <h2 style="margin:0; font-family:Arial; color:#333;">Customer List</h2>
+    <a asp-action="Create" style="padding:8px 12px; background-color:#28a745; color:white; text-decoration:none; border-radius:4px;">
+        Add New Customer
+    </a>
+</div>
+
+<table style="width:100%; border-collapse:collapse; font-family:Arial;">
+    <thead>
+        <tr style="background-color:#f2f2f2;">
+            <th style="border:1px solid #ccc; padding:8px;">ID</th>
+            <th style="border:1px solid #ccc; padding:8px;">Name</th>
+            <th style="border:1px solid #ccc; padding:8px;">Email</th>
+            <th style="border:1px solid #ccc; padding:8px;">Phone</th>
+            <th style="border:1px solid #ccc; padding:8px;">DOB</th>
+            <th style="border:1px solid #ccc; padding:8px;">Address</th>
+            <th style="border:1px solid #ccc; padding:8px;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td style="border:1px solid #ccc; padding:8px;">@c.CustomerId</td>
+                <td style="border:1px solid #ccc; padding:8px;">@c.CustomerName</td>
+                <td style="border:1px solid #ccc; padding:8px;">@c.Email</td>
+                <td style="border:1px solid #ccc; padding:8px;">@c.PhoneNumber</td>
+                <td style="border:1px solid #ccc; padding:8px;">@c.DateOfBirth.ToShortDateString()</td>
+                <td style="border:1px solid #ccc; padding:8px;">@c.Address</td>
+                <td style="border:1px solid #ccc; padding:8px;">
+                    <a asp-action="Email" asp-route-id="@c.CustomerId" style="color:#007bff; text-decoration:none;">Send Email</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

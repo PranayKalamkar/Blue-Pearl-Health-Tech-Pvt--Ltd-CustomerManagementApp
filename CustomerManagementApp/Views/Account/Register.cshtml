@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<h2 style="font-family:Arial; color:#333;">Register</h2>
+
+<form asp-action="RegisterUser" method="post" style="max-width:400px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:8px; background-color:#f9f9f9;">
+    <div style="margin-bottom:15px;">
+        <label for="username" style="display:block; font-weight:bold;">Username</label>
+        <input type="text" name="username" id="username" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="password" style="display:block; font-weight:bold;">Password</label>
+        <input type="password" name="password" id="password" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+        <div style="margin-top:5px;">
+            <input type="checkbox" id="togglePassword" />
+            <label for="togglePassword">Show Password</label>
+        </div>
+    </div>
+
+    <button type="submit" style="width:100%; padding:10px; background-color:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Register
+    </button>
+
+    @if (ViewBag.Error != null)
+    {
+        <div style="margin-top:15px; color:red; text-align:center;">
+            @ViewBag.Error
+        </div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div style="margin-top:15px; color:green; text-align:center;">
+            @ViewBag.Success
+        </div>
+    }
+
+</form>
+
+<div style="text-align:center; margin-top:20px; font-family:Arial;">
+    Already have an account?
+    <a href="/Account/Login" style="color:#007bff; text-decoration:none;">Login here</a>
+</div>
+
+<script>
+    document.getElementById("togglePassword").addEventListener("change", function () {
+        var pwd = document.getElementById("password");
+        pwd.type = this.checked ? "text" : "password";
+    });
+</script>

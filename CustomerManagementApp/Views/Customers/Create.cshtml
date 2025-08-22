@@ -1,0 +1,43 @@
+﻿@model CustomerModel
+
+<h2 style="font-family:Arial; color:#333;">Add Customer</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div style="color:green; font-weight:bold;">@TempData["Success"]</div>
+}
+
+@Html.ValidationSummary(true, "", new { @style = "color:red; font-weight:bold;" })
+
+<form asp-action="Create" method="post" style="max-width:400px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:8px; background-color:#f9f9f9;">
+    @Html.AntiForgeryToken()
+    
+    <div style="margin-bottom:15px;">
+        <label for="CustomerName" style="display:block; font-weight:bold;">Name</label>
+        <input asp-for="CustomerName" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="Email" style="display:block; font-weight:bold;">Email</label>
+        <input asp-for="Email" type="email" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="PhoneNumber" style="display:block; font-weight:bold;">Phone</label>
+        <input asp-for="PhoneNumber" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="DateOfBirth" style="display:block; font-weight:bold;">DOB</label>
+        <input asp-for="DateOfBirth" type="date" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label for="Address" style="display:block; font-weight:bold;">Address</label>
+        <textarea asp-for="Address" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+    </div>
+
+    <button type="submit" style="width:100%; padding:10px; background-color:#007bff; color:white; border:none; border-radius:4px; cursor:pointer;">
+        Save
+    </button>
+</form>
